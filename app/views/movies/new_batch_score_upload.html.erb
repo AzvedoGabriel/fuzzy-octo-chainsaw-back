@@ -1,0 +1,14 @@
+<h2>Upload file for score movie</h2>
+
+<% if notice %>
+  <p>
+    <%= notice %>
+  </p>
+<% end %>
+<%= link_to "Back to movies", movies_path %>
+
+<%= form_with url: movies_create_batch_score_upload_path, turbo: false do |form| %>
+  <%= form.label :score_file, 'Upload' %>
+  <%= form.file_field :score_file %>
+  <%= form.submit %>
+<% end %>

@@ -1,0 +1,15 @@
+<h1>New Movie</h1>
+
+<%= form_with(model: @movie, url: movies_path) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :director %>
+    <%= form.text_field :director %>
+  </div>
+
+  <%= form.submit "Create Movie" %>
+<% end %>

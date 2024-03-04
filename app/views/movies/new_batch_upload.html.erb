@@ -1,0 +1,13 @@
+<h2>Upload Files to movies</h2>
+
+<% if notice %>
+  <p>
+  <%= notice %>
+  </p>
+<% end %>
+<%= link_to "Back to movies", movies_path %>
+<%= form_with url: movies_create_batch_upload_path, turbo: false do |form|%>
+  <%= form.label :movies_file, 'arquivo' %>
+  <%= form.file_field :movies_file %>
+  <%= form.submit %>
+<% end %>

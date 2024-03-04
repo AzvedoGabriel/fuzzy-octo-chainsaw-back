@@ -1,0 +1,16 @@
+<h1>Movies</h1>
+<%= link_to "Add new", new_movie_path %> |
+<%= link_to "Import batch movie", movies_new_batch_upload_path %> |
+<%= link_to "Import batch score", movies_new_batch_score_upload_path %>
+<% @movies.each do |movie| %>
+  <div>
+    <h2><%= movie.title %></h2>
+    <p>Director: <%= movie.director %></p>
+    <p>Average Score: <%= movie.average_score %></p>
+    <%= form_for(current_user.user_movies.find_or_initialize_by(movie_id: movie.id), remote: true) do |f| %>
+      <%= f.hidden_field :movie_id, value: movie.id %>
+      <%= f.number_field :score, in: 1..10 %>
+      <%= f.submit "Rate" %>
+    <% end %>
+  </div>
+<% end %>
